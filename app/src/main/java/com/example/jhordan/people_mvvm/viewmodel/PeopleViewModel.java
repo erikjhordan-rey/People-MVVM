@@ -50,7 +50,7 @@ public class PeopleViewModel implements PeopleViewModelContract.ViewModel {
 
   public void onClickFabLoad(View view) {
     initializeViews();
-    fetchPeopleList(view);
+    fetchPeopleList();
   }
 
   //It is "public" to show an example of test
@@ -60,7 +60,7 @@ public class PeopleViewModel implements PeopleViewModelContract.ViewModel {
     peopleProgress.set(View.VISIBLE);
   }
 
-  private void fetchPeopleList(View view) {
+  private void fetchPeopleList() {
 
     final String URL = "http://api.randomuser.me/?results=10&nat=en";
     unSubscribeFromObservable();
