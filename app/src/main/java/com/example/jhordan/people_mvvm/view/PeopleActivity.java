@@ -26,69 +26,104 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.example.jhordan.people_mvvm.R;
 import com.example.jhordan.people_mvvm.databinding.PeopleActivityBinding;
 import com.example.jhordan.people_mvvm.model.People;
 import com.example.jhordan.people_mvvm.viewmodel.PeopleViewModel;
 import com.example.jhordan.people_mvvm.viewmodel.PeopleViewModelContract;
+
+import org.parceler.Parcels;
+
 import java.util.List;
 
 public class PeopleActivity extends AppCompatActivity implements PeopleViewModelContract.MainView {
 
-  private PeopleActivityBinding peopleActivityBinding;
-  private PeopleViewModel peopleViewModel;
-  private PeopleViewModelContract.MainView mainView = this;
+    private PeopleActivityBinding peopleActivityBinding;
+    private PeopleViewModel peopleViewModel;
+    private PeopleViewModelContract.MainView mainView = this;
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+    private List<People> peopleList;
 
-    initDataBinding();
-    setSupportActionBar(peopleActivityBinding.toolbar);
-    setupListPeopleView(peopleActivityBinding.listPeople);
-  }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-  private void initDataBinding() {
-    peopleActivityBinding = DataBindingUtil.setContentView(this, R.layout.people_activity);
-    peopleViewModel = new PeopleViewModel(mainView, getContext());
-    peopleActivityBinding.setMainViewModel(peopleViewModel);
+        initDataBinding();
+        setSupportActionBar(peopleActivityBinding.toolbar);
+        setupListPeopleView(peopleActivityBinding.listPeople);
 
-  }
-
-  private void setupListPeopleView(RecyclerView listPeople) {
-    PeopleAdapter adapter = new PeopleAdapter();
-    listPeople.setAdapter(adapter);
-    listPeople.setLayoutManager(new LinearLayoutManager(this));
-  }
-
-  @Override protected void onDestroy() {
-    super.onDestroy();
-    peopleViewModel.destroy();
-  }
-
-  @Override public Context getContext() {
-    return PeopleActivity.this;
-  }
-
-  @Override public void loadData(List<People> peoples) {
-    PeopleAdapter peopleAdapter = (PeopleAdapter) peopleActivityBinding.listPeople.getAdapter();
-    peopleAdapter.setPeopleList(peoples);
-  }
-
-  @Override public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.main, menu);
-    return true;
-  }
-
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    if (item.getItemId() == R.id.menu_github) {
-      startActivityActionView();
-      return true;
+        /**
+         * A lifecycle event such as device rotation happened. Use the data
+         * we already have rather than running another http request
+         */
+        if (savedInstanceState != null){
+            peopleList = Parcels.unwrap(savedInstanceState.getParcelable("peopleList"));
+            if (peopleList != null){
+                loadData(peopleList);
+                peopleViewModel.onDataLoaded();
+            }
+        }
     }
-    return super.onOptionsItemSelected(item);
-  }
 
-  private void startActivityActionView() {
-    startActivity(
-        new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/erikcaffrey/People-MVVM")));
-  }
+    /**
+     * Save the list of people to put back without running another http request if something
+     * happens such as rotating the screen
+     * @param outState
+     */
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putParcelable("peopleList", Parcels.wrap(peopleList));
+        super.onSaveInstanceState(outState);
+    }
+
+    private void initDataBinding() {
+        peopleActivityBinding = DataBindingUtil.setContentView(this, R.layout.people_activity);
+        peopleViewModel = new PeopleViewModel(mainView, getContext());
+        peopleActivityBinding.setMainViewModel(peopleViewModel);
+    }
+
+    private void setupListPeopleView(RecyclerView listPeople) {
+        PeopleAdapter adapter = new PeopleAdapter();
+        listPeople.setAdapter(adapter);
+        listPeople.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        peopleViewModel.destroy();
+    }
+
+    @Override
+    public Context getContext() {
+        return PeopleActivity.this;
+    }
+
+    @Override
+    public void loadData(List<People> peoples) {
+        peopleList = peoples;
+        PeopleAdapter peopleAdapter = (PeopleAdapter) peopleActivityBinding.listPeople.getAdapter();
+        peopleAdapter.setPeopleList(peoples);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_github) {
+            startActivityActionView();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void startActivityActionView() {
+        startActivity(
+                new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/erikcaffrey/People-MVVM")));
+    }
 }
