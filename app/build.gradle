@@ -40,6 +40,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
+    compile 'org.parceler:parceler-api:1.1.5'
+
     compile supportDependencies.appCompat
     compile supportDependencies.design
     compile supportDependencies.recyclerView

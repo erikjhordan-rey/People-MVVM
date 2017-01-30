@@ -18,9 +18,13 @@ import com.example.jhordan.people_mvvm.PeopleApplication;
 import com.example.jhordan.people_mvvm.R;
 import com.example.jhordan.people_mvvm.data.PeopleResponse;
 import com.example.jhordan.people_mvvm.data.PeopleService;
+import com.example.jhordan.people_mvvm.view.PeopleActivity;
+
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+
+import static android.view.View.Z;
 
 public class PeopleViewModel implements PeopleViewModelContract.ViewModel {
 
@@ -84,6 +88,15 @@ public class PeopleViewModel implements PeopleViewModelContract.ViewModel {
             peopleList.set(View.GONE);
           }
         });
+  }
+
+  /**
+   * Sets the proper view visibilities for when data has been returned from the http request
+   */
+  public void onDataLoaded(){
+    peopleProgress.set(View.GONE);
+    peopleLabel.set(View.GONE);
+    peopleList.set(View.VISIBLE);
   }
 
   @Override public void destroy() {
