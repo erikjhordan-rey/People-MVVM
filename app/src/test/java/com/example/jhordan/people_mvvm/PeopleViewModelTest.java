@@ -22,7 +22,6 @@ import com.example.jhordan.people_mvvm.data.PeopleService;
 import com.example.jhordan.people_mvvm.databinding.PeopleActivityBinding;
 import com.example.jhordan.people_mvvm.model.People;
 import com.example.jhordan.people_mvvm.viewmodel.PeopleViewModel;
-import com.example.jhordan.people_mvvm.viewmodel.PeopleViewModelContract;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,8 +60,6 @@ public class PeopleViewModelTest {
 
   @Mock private PeopleService peopleService;
 
-  @Mock private PeopleViewModelContract.MainView mainView;
-
   private PeopleViewModel peopleViewModel;
 
   @Mock private PeopleActivityBinding peopleActivityBinding;
@@ -77,7 +74,7 @@ public class PeopleViewModelTest {
     peopleApplication.setPeopleService(peopleService);
     peopleApplication.setScheduler(Schedulers.immediate());
 
-    peopleViewModel = new PeopleViewModel(mainView, peopleApplication);
+    peopleViewModel = new PeopleViewModel(peopleApplication);
   }
 
   @Test public void simulateGivenTheUserCallListFromApi() throws Exception {
