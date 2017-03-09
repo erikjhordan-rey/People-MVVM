@@ -80,7 +80,7 @@ public class PeopleActivity extends AppCompatActivity implements Observer {
     return super.onOptionsItemSelected(item);
   }
 
-  private void startActivityActionView() {
+  private void  startActivityActionView() {
     startActivity(
         new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/erikcaffrey/People-MVVM")));
   }
