@@ -9,7 +9,7 @@ and also it was created for a talk **MVVM-android** [Meetup Androidinights](http
 
 Libraries used on the sample project
 ------------------------------------
-* [AppCompat, CardView, RecyclerView an DesignLibrary](http://developer.android.com/intl/es/tools/support-library/index.html)
+* [AppCompat, CardView, RecyclerView and DesignLibrary](http://developer.android.com/intl/es/tools/support-library/index.html)
 * [Data binding](https://erikcaffrey.github.io/ANDROID-databinding-android/)
 * [Retrofit 2](http://square.github.io/retrofit/)
 * [RxJava & RxAndroid](https://github.com/ReactiveX/RxAndroid)
