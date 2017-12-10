@@ -1,65 +1,141 @@
 ext {
 
-  //Version
-  supportVersion = '27.0.1'
+    // -------------- VERSIONS --------------
+    androidMinSdk = 19
+    androidCompileSdk = 27
+    androidGradleTools = '3.0.1'
+    aptPlugin = '1.8'
 
-  retrofitVersion = '2.2.0'
-  rxAndroidVersion = '2.0.1'
-  rxJavaVersion  = '2.1.5'
+    configVersionCode = 1
+    configVersionName = '1.4.1'
 
-  glideVersion = '3.6.1'
-  circleImageVersion = '1.3.0'
+    supportVersion = '27.0.1'
+    supportConstraintVersion = '1.0.2'
 
-  junitVersion = '4.12'
-  mockitoVersion = '2.8.47'
+    retrofitVersion = '2.2.0'
+    rxAndroidVersion = '2.0.1'
+    rxJavaVersion = '2.1.5'
 
-  //Packages
-  supportPackage = 'com.android.support'
-  retrofitPackage = 'com.squareup.retrofit2'
+    glideVersion = '3.7.0'
+    glidePalleteVersion = '1.0.6@aar'
+    circleImageVersion = '1.3.0'
+    zhanghaiProgressBarVersion = '1.3.0'
+    muzeiVersion = '2.0'
+    roundImageViewVersion = '2.3.0'
+    iabVersion = '1.0.32'
+    insetDispatcherVersion = '0.1.3'
+    kustomApiVersion = '+'
 
-  reactivePackage = 'io.reactivex.rxjava2'
+    afollestadMaterialDialogVersion = '0.9.4.5'
+    afollestadDragSelectRvVersion = '0.4.0'
+    afollestadBridgeVersion = '5.1.2'
+    afollestadSectionedRvVersion = '0.5.0'
+    afollestadAssentVersion = '0.2.5'
+    afollestadIconRequestVersion = '1.5.2'
+    afollestadInquiryVersion = '5.0.0'
 
-  glidePackage = 'com.github.bumptech.glide'
-  hdodenhofPackage = 'de.hdodenhof'
+    butterKnifeVersion = '8.6.0'
+
+    junitVersion = '4.12'
+    mockitoVersion = '2.8.47'
+
+    runnerVersion = '1.0.1'
+    espressoVersion = '3.0.1'
+
+    // -------------- PACKAGES --------------
+    supportPackage = 'com.android.support'
+    supportConstraintPackage = 'com.android.support.constraint'
+    retrofitPackage = 'com.squareup.retrofit2'
+
+    reactivePackage = 'io.reactivex.rxjava2'
+
+    afollestadPackage = 'com.afollestad'
+    afollestadMaterialDialogPackage = 'com.afollestad.material-dialogs'
+    zhanghaiMaterialPackage = 'me.zhanghai.android.materialprogressbar'
+
+    githubPackage = 'com.github'
+    glidePackage = githubPackage + '.bumptech.glide'
+    glidePalletePackage = githubPackage + '.florent37'
+
+    bitbucketPackage = 'org.bitbucket'
+    kustomApiPackage = bitbucketPackage + '.frankmonza'
+
+    hdodenhofPackage = 'de.hdodenhof'
+    butterknifePackage = 'com.jakewharton'
+    muzeiPackage = 'com.google.android.apps.muzei'
+    roundImagePackage = 'com.makeramen'
+    iabPackage = 'com.anjlab.android.iab.v3'
+    insetsDispatcherPackage = 'com.pluscubed'
+
+    junitPackage = 'junit'
+    mockitoPackage = 'org.mockito'
+
+    androidSupportTest = 'com.android.support.test'
+    androidSupportTestEspresso = 'com.android.support.test.espresso'
+
+    // -------------- SET DEPENDENCY --------------
+    supportDependencies = [
+            design            : buildDependency(supportPackage, 'design', supportVersion),
+            recyclerView      : buildDependency(supportPackage, 'recyclerview-v7', supportVersion),
+            cardView          : buildDependency(supportPackage, 'cardview-v7', supportVersion),
+            appCompat         : buildDependency(supportPackage, 'appcompat-v7', supportVersion),
+            constraintLayout  : buildDependency(supportConstraintPackage, 'constraint-layout', supportConstraintVersion),
+            supportV4         : buildDependency(supportPackage, 'support-v4', supportVersion),
+            supportV13        : buildDependency(supportPackage, 'support-v13', supportVersion),
+            supportAnnotations: buildDependency(supportPackage, 'support-annotations', supportVersion),
+            supportVector     : buildDependency(supportPackage, 'support-vector-drawable', supportVersion),
+            supportPercent    : buildDependency(supportPackage, 'percent', supportVersion),
+            supportPalette    : buildDependency(supportPackage, 'palette-v7', supportVersion)
+    ]
+
+    retrofitDependencies = [
+            retrofit     : buildDependency(retrofitPackage, 'retrofit', retrofitVersion),
+            gson         : buildDependency(retrofitPackage, 'converter-gson', retrofitVersion),
+            rxAdapterJava: buildDependency(retrofitPackage, 'adapter-rxjava2', retrofitVersion)
+    ]
+
+    rxDependencies = [
+            rxAndroid: buildDependency(reactivePackage, 'rxandroid', rxAndroidVersion),
+            rxJava   : buildDependency(reactivePackage, 'rxjava', rxJavaVersion)
+    ]
 
 
-  junitPackage = 'junit'
-  mockitoPackage = 'org.mockito'
+    glide = buildDependency(glidePackage, 'glide', glideVersion)
+    glidePalette = buildDependency(glidePalletePackage, 'glidepalette', glidePalleteVersion)
+    circleImageView = buildDependency(hdodenhofPackage, 'circleimageview', circleImageVersion)
+    zhanghaiProgressBar = buildDependency(zhanghaiMaterialPackage, 'library', zhanghaiProgressBarVersion)
+    muzeiApi = buildDependency(muzeiPackage, 'muzei-api', muzeiVersion)
+    roundImageView = buildDependency(roundImagePackage, 'roundedimageview', roundImageViewVersion)
+    iab = buildDependency(iabPackage, 'library', iabVersion)
+    insetsDispatcher = buildDependency(insetsDispatcherPackage, 'insets-dispatcher', insetDispatcherVersion)
+    kustomApi = buildDependency(kustomApiPackage, 'kustomapi', kustomApiVersion)
 
-  supportDependencies = [
+    afollestadDependencies = [
+            material_dialogs        : buildDependency(afollestadMaterialDialogPackage, 'core', afollestadMaterialDialogVersion),
+            drag_select_recyclerview: buildDependency(afollestadPackage, 'drag-select-recyclerview', afollestadDragSelectRvVersion),
+            bridge                  : buildDependency(afollestadPackage, 'bridge', afollestadBridgeVersion),
+            sectioned_recylerview   : buildDependency(afollestadPackage, 'sectioned-recyclerview', afollestadSectionedRvVersion),
+            assent                  : buildDependency(afollestadPackage, 'assent', afollestadAssentVersion),
+            icon_request            : buildDependency(afollestadPackage, 'icon-request', afollestadIconRequestVersion),
+            inquiry                 : buildDependency(afollestadPackage, 'inquiry', afollestadInquiryVersion)
+    ]
 
-      design           : buildDependency(supportPackage, 'design', supportVersion),
-      recyclerView     : buildDependency(supportPackage, 'recyclerview-v7', supportVersion),
-      cardView         : buildDependency(supportPackage, 'cardview-v7', supportVersion),
-      appCompat        : buildDependency(supportPackage, 'appcompat-v7', supportVersion)
-  ]
+    buttterKnifeDependencies = [
+            butterknife          : buildDependency(butterknifePackage, 'butterknife', butterKnifeVersion),
+            butterknife_compiler : buildDependency(butterknifePackage, 'butterknife-compiler', butterKnifeVersion)
+    ]
 
-  retrofitDependencies = [
+    testingDependencies = [
+            junit  : buildDependency(junitPackage, 'junit', junitVersion),
+            mockito: buildDependency(mockitoPackage, 'mockito-core', mockitoVersion)
+    ]
 
-      retrofit     : buildDependency(retrofitPackage, 'retrofit', retrofitVersion),
-      gson         : buildDependency(retrofitPackage, 'converter-gson', retrofitVersion),
-      rxAdapterJava: buildDependency(retrofitPackage, 'adapter-rxjava2', retrofitVersion)
-  ]
-
-  rxDependencies = [
-
-      rxAndroid: buildDependency(reactivePackage, 'rxandroid', rxAndroidVersion),
-      rxJava   : buildDependency(reactivePackage,'rxjava',rxJavaVersion)
-  ]
-
-
-  glide = buildDependency(glidePackage, 'glide', glideVersion)
-  circleImageView = buildDependency(hdodenhofPackage, 'circleimageview', circleImageVersion)
-
-
-  testingDependencies = [
-
-      junit      : buildDependency(junitPackage, 'junit', junitVersion),
-      mockito    : buildDependency(mockitoPackage, 'mockito-core', mockitoVersion)
-
-  ]
+    testingSupportDependencies = [
+            supportTest        : buildDependency(androidSupportTest, 'runner', runnerVersion),
+            supportTestEspresso: buildDependency(androidSupportTestEspresso, 'espresso-core', espressoVersion)
+    ]
 }
 
 static String buildDependency(String pack, String dependency, String version) {
-  return "${pack}:${dependency}:${version}"
+    return "${pack}:${dependency}:${version}"
 }
