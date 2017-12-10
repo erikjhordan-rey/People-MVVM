@@ -1,13 +1,13 @@
 ext {
 
     // -------------- VERSIONS --------------
-    androidMinSdk = 19
+    androidMinSdk = 17
     androidCompileSdk = 27
     androidGradleTools = '3.0.1'
     aptPlugin = '1.8'
 
     configVersionCode = 1
-    configVersionName = '1.4.1'
+    configVersionName = '1.1'
 
     supportVersion = '27.0.1'
     supportConstraintVersion = '1.0.2'
