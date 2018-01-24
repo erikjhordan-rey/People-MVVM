@@ -13,7 +13,6 @@ Libraries used on the sample project
 * [Data binding](https://erikcaffrey.github.io/ANDROID-databinding-android/)
 * [Retrofit 2](http://square.github.io/retrofit/)
 * [RxJava & RxAndroid](https://github.com/ReactiveX/RxAndroid)
-* [robolectric](http://robolectric.org/)
 * [junit, mockito](http://mockito.org/)
 
 # Demo
