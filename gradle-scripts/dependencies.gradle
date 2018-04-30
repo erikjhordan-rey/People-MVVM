@@ -12,6 +12,7 @@ ext {
 
   junitVersion = '4.12'
   mockitoVersion = '2.8.47'
+  multidexVersion = '1.0.1'
 
   //Packages
   supportPackage = 'com.android.support'
@@ -58,6 +59,8 @@ ext {
       mockito    : buildDependency(mockitoPackage, 'mockito-core', mockitoVersion)
 
   ]
+  
+  multidex = buildDependency(supportPackage, 'multidex', multidexVersion)
 }
 
 static String buildDependency(String pack, String dependency, String version) {

@@ -61,4 +61,6 @@ dependencies {
 
     testImplementation testingDependencies.junit
     testImplementation testingDependencies.mockito
+    
+    implementation multidex
 }

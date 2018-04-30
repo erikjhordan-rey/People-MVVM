@@ -25,7 +25,7 @@ import com.example.jhordan.people_mvvm.data.PeopleService;
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 
-public class PeopleApplication extends Application {
+public class PeopleApplication extends MultiDexApplication {
 
   private PeopleService peopleService;
   private Scheduler scheduler;
