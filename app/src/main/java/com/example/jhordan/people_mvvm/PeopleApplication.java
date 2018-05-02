@@ -16,8 +16,9 @@
 
 package com.example.jhordan.people_mvvm;
 
-import android.app.Application;
+
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 
 import com.example.jhordan.people_mvvm.data.PeopleFactory;
 import com.example.jhordan.people_mvvm.data.PeopleService;
