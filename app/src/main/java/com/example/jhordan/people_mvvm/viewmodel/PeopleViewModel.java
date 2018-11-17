@@ -61,6 +61,9 @@ public class PeopleViewModel extends Observable {
     peopleProgress.set(View.VISIBLE);
   }
 
+  // NOTE: This method can return the observer and just subscribe to it in the activity or fragment,
+  // an Activity or Fragment needn't to implement from the Observer java class
+  // (it was my first approach to avoid RX in UI now we can use LiveData instead)
   private void fetchPeopleList() {
 
     PeopleApplication peopleApplication = PeopleApplication.create(context);
