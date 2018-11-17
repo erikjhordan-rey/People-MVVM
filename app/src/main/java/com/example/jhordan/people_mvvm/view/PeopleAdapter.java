@@ -17,6 +17,7 @@
 package com.example.jhordan.people_mvvm.view;
 
 import android.databinding.DataBindingUtil;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -33,11 +34,12 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleAdap
 
   private List<People> peopleList;
 
-  public PeopleAdapter() {
+  PeopleAdapter() {
     this.peopleList = Collections.emptyList();
   }
 
-  @Override public PeopleAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  @NonNull
+  @Override public PeopleAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     ItemPeopleBinding itemPeopleBinding =
         DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_people,
             parent, false);
@@ -52,15 +54,15 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleAdap
     return peopleList.size();
   }
 
-  public void setPeopleList(List<People> peopleList) {
+  void setPeopleList(List<People> peopleList) {
     this.peopleList = peopleList;
     notifyDataSetChanged();
   }
 
-  public static class PeopleAdapterViewHolder extends RecyclerView.ViewHolder {
+  static class PeopleAdapterViewHolder extends RecyclerView.ViewHolder {
     ItemPeopleBinding mItemPeopleBinding;
 
-    public PeopleAdapterViewHolder(ItemPeopleBinding itemPeopleBinding) {
+    PeopleAdapterViewHolder(ItemPeopleBinding itemPeopleBinding) {
       super(itemPeopleBinding.itemPeople);
       this.mItemPeopleBinding = itemPeopleBinding;
     }

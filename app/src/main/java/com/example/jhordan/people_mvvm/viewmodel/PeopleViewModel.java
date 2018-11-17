@@ -61,7 +61,7 @@ public class PeopleViewModel extends Observable {
     peopleProgress.set(View.VISIBLE);
   }
 
-  public void fetchPeopleList() {
+  private void fetchPeopleList() {
 
     PeopleApplication peopleApplication = PeopleApplication.create(context);
     PeopleService peopleService = peopleApplication.getPeopleService();
@@ -70,14 +70,14 @@ public class PeopleViewModel extends Observable {
         .subscribeOn(peopleApplication.subscribeScheduler())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new Consumer<PeopleResponse>() {
-          @Override public void accept(PeopleResponse peopleResponse) throws Exception {
+          @Override public void accept(PeopleResponse peopleResponse) {
             changePeopleDataSet(peopleResponse.getPeopleList());
             peopleProgress.set(View.GONE);
             peopleLabel.set(View.GONE);
             peopleRecycler.set(View.VISIBLE);
           }
         }, new Consumer<Throwable>() {
-          @Override public void accept(Throwable throwable) throws Exception {
+          @Override public void accept(Throwable throwable) {
             messageLabel.set(context.getString(R.string.error_loading_people));
             peopleProgress.set(View.GONE);
             peopleLabel.set(View.VISIBLE);
