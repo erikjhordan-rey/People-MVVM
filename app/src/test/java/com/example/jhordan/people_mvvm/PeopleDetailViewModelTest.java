@@ -42,7 +42,7 @@ import static org.junit.Assert.assertEquals;
     }
 
     @Test public void shouldGetUserName() {
-        assertEquals(people.userName.userName, peopleDetailViewModel.getUserName());
+        assertEquals(people.login.userName, peopleDetailViewModel.getUserName());
     }
 
     @Test public void shouldGetCell() {

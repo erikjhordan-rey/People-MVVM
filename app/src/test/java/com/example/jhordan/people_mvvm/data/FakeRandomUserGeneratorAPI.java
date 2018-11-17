@@ -50,8 +50,8 @@ public class FakeRandomUserGeneratorAPI {
     People people = new People();
     people.picture = new Picture();
     people.location = new Location();
-    people.userName = new Login();
-    people.userName.userName = PEOPLE_USER_NAME_TEST;
+    people.login = new Login();
+    people.login.userName = PEOPLE_USER_NAME_TEST;
     people.fullName = PEOPLE_TITLE_TEST + "." + PEOPLE_FIRST_TEST + " " + PEOPLE_LAST_TEST;
     people.cell = PEOPLE_CELL_TEST;
     people.mail = PEOPLE_MAIL_TEST;

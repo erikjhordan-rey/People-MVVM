@@ -37,7 +37,7 @@ public class PeopleDetailViewModel {
   }
 
   public String getUserName() {
-    return people.userName.userName;
+    return people.login.userName;
   }
 
   public String getEmail() {
