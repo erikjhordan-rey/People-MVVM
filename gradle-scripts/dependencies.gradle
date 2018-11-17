@@ -22,9 +22,10 @@ ext {
   glidePackage = 'com.github.bumptech.glide'
   hdodenhofPackage = 'de.hdodenhof'
 
-
   junitPackage = 'junit'
   mockitoPackage = 'org.mockito'
+
+  multidexVersion = '1.0.2'
 
   supportDependencies = [
       design           : buildDependency(supportPackage, 'design', supportVersion),
@@ -52,6 +53,8 @@ ext {
       junit      : buildDependency(junitPackage, 'junit', junitVersion),
       mockito    : buildDependency(mockitoPackage, 'mockito-core', mockitoVersion)
   ]
+
+  multidex = buildDependency(supportPackage, 'multidex', multidexVersion)
 }
 
 static String buildDependency(String pack, String dependency, String version) {

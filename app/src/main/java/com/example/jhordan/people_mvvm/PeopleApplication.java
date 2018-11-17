@@ -16,8 +16,8 @@
 
 package com.example.jhordan.people_mvvm;
 
-import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 
 import com.example.jhordan.people_mvvm.data.PeopleFactory;
 import com.example.jhordan.people_mvvm.data.PeopleService;
@@ -25,7 +25,7 @@ import com.example.jhordan.people_mvvm.data.PeopleService;
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 
-public class PeopleApplication extends Application {
+public class PeopleApplication extends MultiDexApplication {
 
   private PeopleService peopleService;
   private Scheduler scheduler;

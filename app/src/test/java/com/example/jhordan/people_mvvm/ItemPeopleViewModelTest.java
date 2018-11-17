@@ -16,18 +16,19 @@
 
 package com.example.jhordan.people_mvvm;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.Observable;
-import android.test.mock.MockContext;
+
 import com.example.jhordan.people_mvvm.data.MockView;
 import com.example.jhordan.people_mvvm.model.Name;
 import com.example.jhordan.people_mvvm.model.People;
 import com.example.jhordan.people_mvvm.model.Picture;
 import com.example.jhordan.people_mvvm.viewmodel.ItemPeopleViewModel;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -46,7 +47,7 @@ import static org.mockito.Mockito.verify;
     private static final String PEOPLE_FIRST_TEST = "constance";
     private static final String PEOPLE_LAST_TEST = "fowler";
 
-    @Mock private MockContext mockContext;
+    private Context mockContext = mock(Context.class);
 
     @Test public void shouldGetPeopleCell() throws Exception {
         People people = new People();

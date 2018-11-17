@@ -37,36 +37,36 @@ import static org.junit.Assert.assertEquals;
         peopleDetailViewModel = new PeopleDetailViewModel(people);
     }
 
-    @Test public void shouldGetURLPictureProfile() throws Exception {
+    @Test public void shouldGetURLPictureProfile() {
         assertEquals(people.picture.large, peopleDetailViewModel.getPictureProfile());
     }
 
-    @Test public void shouldGetUserName() throws Exception {
+    @Test public void shouldGetUserName() {
         assertEquals(people.userName.userName, peopleDetailViewModel.getUserName());
     }
 
-    @Test public void shouldGetCell() throws Exception {
+    @Test public void shouldGetCell() {
         assertEquals(people.cell, peopleDetailViewModel.getCell());
     }
 
-    @Test public void shouldGetMail() throws Exception {
+    @Test public void shouldGetMail() {
         assertEquals(people.mail, peopleDetailViewModel.getEmail());
     }
 
-    @Test public void shouldGetGender() throws Exception {
+    @Test public void shouldGetGender() {
         assertEquals(people.gender, peopleDetailViewModel.getGender());
     }
 
-    @Test public void shouldGetAddress() throws Exception {
+    @Test public void shouldGetAddress() {
         String fakeAddress = people.location.street + " " + people.location.city + " " + people.location.state;
         assertEquals(fakeAddress, peopleDetailViewModel.getAddress());
     }
 
-    @Test public void givenTheEmailVisibilityVisible() throws Exception {
+    @Test public void givenTheEmailVisibilityVisible() {
         assertEquals(View.VISIBLE, peopleDetailViewModel.getEmailVisibility());
     }
 
-    @Test public void givenTheEmailVisibilityGone() throws Exception {
+    @Test public void givenTheEmailVisibilityGone() {
         people.mail = null;
         assertEquals(View.GONE, peopleDetailViewModel.getEmailVisibility());
     }
