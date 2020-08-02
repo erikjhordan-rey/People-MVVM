@@ -16,26 +16,28 @@
 
 package io.github.erikjhordanrey.people_mvvm.view;
 
-import androidx.databinding.DataBindingUtil;
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import io.github.erikjhordanrey.people_mvvm.R;
 import io.github.erikjhordanrey.people_mvvm.databinding.ItemPeopleBinding;
 import io.github.erikjhordanrey.people_mvvm.model.People;
 import io.github.erikjhordanrey.people_mvvm.viewmodel.ItemPeopleViewModel;
 
-import java.util.Collections;
-import java.util.List;
-
-public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleAdapterViewHolder> {
-
-    private List<People> peopleList;
-
-    PeopleAdapter() {
-        this.peopleList = Collections.emptyList();
+class PeopleAdapter extends ListAdapter<People,PeopleAdapter.PeopleAdapterViewHolder>{
+    protected PeopleAdapter(@NonNull DiffUtil.ItemCallback diffCallback) {
+        super(diffCallback);
     }
+
+
+
+
 
     @NonNull
     @Override
@@ -46,19 +48,12 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleAdap
     }
 
     @Override
-    public void onBindViewHolder(PeopleAdapterViewHolder holder, int position) {
-        holder.bindPeople(peopleList.get(position));
+    public void onBindViewHolder(@NonNull PeopleAdapterViewHolder holder, int position) {
+
+        People item=getItem(position);
+        holder.bindPeople(item);
     }
 
-    @Override
-    public int getItemCount() {
-        return peopleList.size();
-    }
-
-    void setPeopleList(List<People> peopleList) {
-        this.peopleList = peopleList;
-        notifyDataSetChanged();
-    }
 
     static class PeopleAdapterViewHolder extends RecyclerView.ViewHolder {
         ItemPeopleBinding binding;
@@ -76,4 +71,8 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleAdap
             }
         }
     }
-}
+ }
+
+
+
+
